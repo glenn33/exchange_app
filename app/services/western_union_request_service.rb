@@ -1,0 +1,25 @@
+class WesternUnionRequestService < ApplicationService
+  require "open-uri"
+  
+  def call
+    url = "https://www.westernunion.com/wuconnect/prices/catalog"
+    headers = {
+      "origin" => "https://www.westernunion.com",
+      "referer" => "https://www.westernunion.com/es/es/currency-converter/eur-to-ars-rate.html",
+      "x-nyupe9cs-a" => "DEXeaSJygse9hKDhgcS7ILa7zF2Fsv3DglgtgsHMRgdFFbD128RA7c838Gr=feXIljzjAjiRDZZbBRn2_t8t75qNcS7Dmzr4oKRo-H5SrrZQGmVrLYaxKagTWKSRP=s=8abiFglw=AQIcc1=WCjFX9XSNLOB7CcPdX_P1prDx7-xgRj-3hzQBuVNZQdT=W7ZKo30yDjvXhBpFX==dXm6bhINGWXpAJ1BhIg5CyDEG3U6niDarwUeOaWsEw2IOEZL=0FM_4n_8V_jAuj9KC7lIHc8rfRcNw_f-Wzzr0uJfI3Usc=wcy5hFoxwbXbe_esu1=jW-BYqNpXqg7DWaKGzb3T884F5YnW7vmP3TCQLuOgz29mCxXfqbBhyt1alWEO3sYMiUQ6HnKpZ1whiA570idIEwN4FOGMupzHzyjdQ_Rj1X0tL72vr2vXwPcGsBoUZAp_2BwB=dQcS33dJi_U=v2OHcE5EzPYiCtMIg1Zg97ZMojRir_u=FR4PSxisGdQXAPini4gB7fu_zbA5NFQwNMCS1NWUfrP09BTChv8e18OS0OMfD38-tH7Jlh9eIdwpe1L-WdiSqfgTRs-3WS334mUuW=xpGC0aTygCVWpKHyx7RCKMladIMTwOiAC0CKV8sZc0NArxOig_YsEJImWmT5fM0ZS=_7Q9m1od4t8rMOH1wQ-7fNnzdasji46=SPYb2-IBDxYGZn01lyyKovPfDCQOh2MJ3Ir0RA9QpiiYKmdtisYOuWFw1_S58F9DWFVRSaStopwMdOc=QWdw896aR7phbUUq7AGt2Lgvnhvvds2McGJzy3TP6TrEPdQ7mW97j1eP9mcrBgQG6C8mP7HyyeL2fvvP-8uFu19J1bgflUpVTERWo9ZmP7aW8K7I89gx98qPjJ4_b12YyglIjlsQcInMw3JA6iilzTZ4coSiuMX=Y3nTxMlq-Sy4QMW2NoEVg8BoVDULN2OLpvqAq3IlIzmt_nKhAoOxd1M0njKRYZzfXQL_XWEH_IiySwGQgvbpnz4zV0Ug=ftd4o_PhXtLFS3KFMtrswEvTG5QMExA7FFbiwThhDB45wvQQHL3c==lpzg3CRlTVm=qtiTMR3DDULKBNMG7Wmho_FLxRrrZC0Nlfop77bx7Ta4zNVt0ECjqZxm_ehvPyKvva17KsoJgiS3GDET=Vm2tvS39zEccxWN6y79aT4rMoOy0N0GwidKSwAoPR8WzBdY15ubNrfbme4w4P=xexgprVnBwpeLbbM-SpApKpLpoPHy45LVDL8sYeulKPS5IjVeqp7M0QvRGWRDlYP1Ht=Fn=Wm0oZY-X33OPNQCVL0JdSDw8c1pxJy7HJz=C37O3JKyEToOdFO-ei0fuqDZznVtn-9d9bblCC=In79-rU1LTmG00ZBpfml-gxjecQwPJ3Lh9RPPO2F25jlcdmha9r=atHr_aWcvabH9-a5b0Ququ96IS8Q=OW=zRO4bHs72g4X32FGhUSLRb5YCcXquWimAD44It0w_DsjXEX8ioUW1C74uXC4BbeBUfWFvV3AaHrnOar=1fQV-jtwVbJi0PxneKLd7w2UrGOxdPhrZ5egoQrsZ9h6PggcdCRVPK4ej5oUjTdoDjxTaG0RlTWc-i6fM6jad2HsYn5sNGJm2Q85-MFVt9nnFrSIaKKUtzudW8WS0_AdRjSUQhJoJH1vvBg3UDLrSqQ_i79sTsIeNCGOiHaFl2ijcwJdLRZaosvHhuJgAqEPI7a=YRiAcOY7hO=NMi6UxK4P16p8FFbnnTzSpaEcQx8s7q3=faKJBbnMOY_VsuYL2pAx9jAn4yvvXt-8Bupdl7_wi-gVno6ZryXt=pE9Ku0G_YNX4QNj6t3ZSWAsgqW-gixjOwW2oSqc2_ytFXgpLubmF80Khy1bNKwxLE1NlcAdfwUl8TfCdC4q-KDsDbhc1yhhWn3eT65J5_gUpJRQi2Jl7cRZIBMyTS_aZVJ8HdLaBTKpejhJT02DJAxKe2_m07A66LhEX7uflIAI0Y6sSQGBvCDlxsqaBVTrBqli3lLhCjpH-ZvWBw5T63Ve5jjt5z-oXzTfy8YTyyS-=eCT5SaUDTUAQ_Xl2CKGpyBwVy17Q0bp_IasfU2v89pgbdjdLP-J4gf18oLr0WITlFx88YzsPTL2YP0ZYJFUY5tPdmB5NPDlFNO-U=g35Yut99o=j2CO90FIH2y08CF1=qWe9-m_XiGKPcaKMo4lItKFgEcUPjMfHX=r12c6uvBU1ULnvGver35xIwlilZYeopFr06mbQ69iPrWMzIuRNZM6=D-3be8_8hY4WKIferde5UNt7jdtdt5UNuLQvqTJavlJnUIZsnqM6GpzVcrWMolggRht14FL6syVatsMJTBBe=EiJK8uAo0YNpVdGcK5XiDKwdAPq7ugPhMFed0O4FV=WnVw09j4TsOTC9crt2x_Ib1_=VoMK-VxBsb1hKn720R3ZpHlQYY0jX=tjKEnNiUOuzIwVbnvcLXC2IaDYnQa-tVzrObeqFA4REjxwuoVFwisgVtF7B7icl_PlYSVmHSbWA5I_ZnwpBlVzB5l91SspNX3GBBwpX8yOuLT7Gj7xqlydPoPr0IjAGx399GFruWdDUrH9TWPDoA3_2Awa9QZhEZeoie_hcsmpooUd4R6EHE02iggFmAahlSvZsQ0cnEYpAKV_3=RlHVv3GhLzC5_hUtfuaxxxq50f6QnpZcyCdli1VCX3cSy6TVAEQGZElcPtvGwzSAEc=vDFDynLR5W1xfBYRLQZEcKH2R_5AjnyiVf8dy8Rw2_7WTM=UT36b-IV8EpTa8ePbaoE1WKCNy=Mw0acS4HNHOhA-QzfMqpz4Xm8a5=cAil89oGsWsQON4njwFgxiOKibo2PAxzSgUyPfqISRp9MdNuLUZ1LRA6DelW7BpVO2pSCF1ewDyxE0tntLnl72woW2-Jh=w9H7wCe8vDVDcy3fIcNA9GyzZed0jL-herKyCOh1bRzP59RcMYMtrA5czcRHeB1md_chU0s6CjhEK9Qx7hDs2pHJ9WbAxtcnfJB0fQaWqbDM2a_G-gZjPXV1Ioh=h-82JM_YqThVyWUdaFiBDKQUPRCAAjKmhKeVhF1B16TIvGaXa7Q=JcnzzKmO8n=5qWZQCz5r8eYyEOKvujqqNoBrvFr41XTqCpZo21DNNOEM65T=X3QZMa641zjRGn5cbfV3BD6xvnPDjCbV8P4I7vYJ75LNwQ2SueCFpzHbh=ULf8HvV1hzACwZ9EbFY_w_xXoVXuL09FmL0cf2Tuu=6_u7yxZMuglZnsYx-IBhc0YXcfeH0dm1EY0Nvg6IgfX3Q6UEmIjhnRZS5cPO=ml7JfDY9huxvJoPQRPWzPm_MGEboz4QMQs7NrrwQ2AD1aY_q0vBycWiiKr-2fjZzLrRb4K6PA76BgcMV8GvmHqq_X=HjBgxKN9ITEBTQFLgjHG5AltdjzMria5YyxVyAbyotIhPh3bARbElQEf3byiyYcNCGR192yVri_uz6KQXmVx14Lscv4zb4M1vxQCq5h_tc5FR1XdTz5KmZ8VUTqaSQlxWpFbfBC-myXLWx=mFNDTCXFhO-v_M5lBgwUhiM6QROv60-PadwjouSpgXmWOPqjKfmCKi=zoMc7wEXjy_t3QzNbB3ctnUo8odUWzJLByFm2=8v7HRXGRmRVmveM540EG182=9JMcfgOMdtJh2sGvIzHz5YirOHK0FhNF8j6AuzLumZXjw109P2ug2OvSyM2ngVnaafpQpJQKuswKHyh=oKu6VWStAaZyKwv=7zDo0DbVC6s4o96R=MCes8wNK5Tu2UaXxt3zbxHOb2SVL2cEo8bgViCLdLSmSrNPaLQ-ScQp3l8FLuUiAFBWxVgPJCTU0iN",
+      "x-nyupe9cs-b" => "k4l6eh",
+      "x-nyupe9cs-c" => "AKC4ku5-AQAAJjio7-fsBrNUCgw23Nw5xczEqt_1XkeLz4LCUZlcfXUV4Fv8",
+      "x-nyupe9cs-d" => "ABaChIjBDKGNgUGAQZIQhISi0eIAtJmBDgCZXH11FeBb_AAAAABHQ_4PAKWzyx3-MKeQbB0cE5wPO-I",
+      "x-nyupe9cs-f" => "A2jyku5-AQAAehS7Nr0oOLZYaDktIn5pxK77wj5EQFlMfITeDCToQ1Q66TQlAaozqJKuct9pwH8AAEB3AAAAAA==",
+      "x-nyupe9cs-z" => "q"
+    }
+    body = '{"header_request":{"version":"0.5","request_type":"PRICECATALOG"},"sender":{"client":"WUCOM","channel":"WWEB","funds_in":"CC","curr_iso3":"EUR","cty_iso2_ext":"ES","send_amount":"100.00"},"receiver":{"curr_iso3":"ARS","cty_iso2_ext":"AR","cty_iso2":"AR"}}'
+    
+    response = Faraday.post(url, body, headers)
+    body = JSON.parse(response.body)
+
+    body.dig("services_groups")&.first&.dig("pay_groups")&.first&.dig("fx_rate")    
+  end
+
+  private
+end

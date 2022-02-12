@@ -1,2 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <br>
+  <h3>Actual WU exchange rate (ARS): <strong><%= @exchange_rate %></strong></h3>
+  <br>
+  <p>100 EUR = <%= 100 * @exchange_rate %> EUR</p>
+</div>
